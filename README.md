@@ -14,7 +14,7 @@ Paste a few of your own messages. ColdOpen learns how you write and drafts three
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License" />
 </p>
 
-[**Live demo**](https://coldopen-fe.onrender.com/) · [**Write-up on DEV**](https://dev.to/your-post) · [**Report an issue**](../../issues)
+[**Live demo**](https://coldopen-fe.onrender.com/) · [**Write-up on DEV**]([https://dev.to/your-post](https://dev.to/atharv96k/coldopen-an-open-weight-model-that-learns-how-you-write-then-drafts-the-email-youd-actually-send-1ogg)) · [**Report an issue**](../../issues)
 
 ![ColdOpen side-by-side comparison](docs/sc.png)
 
