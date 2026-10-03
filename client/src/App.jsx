@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import testCases from './testData.json'; // NEW: test data for one-click fill
+import testCases from './testData.json';
+
+// Base URL for the backend. Empty string = same origin (/api/...), which works
+// with the Vite proxy in development and with Express serving the built app in production.
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const GOALS = [
   { value: 'alumni', label: 'Intro to an alumnus/alumna' },
@@ -16,9 +20,10 @@ const GOALS = [
   { value: 'thanks', label: 'Thank you after a call or help' },
   { value: 'reconnect', label: 'Reconnect with an old contact' },
   { value: 'reference', label: 'Ask for a reference or recommendation' },
-  { value: 'switch', label: 'Ask about a role at their company' }, // NEW
+  { value: 'switch', label: 'Ask about a role at their company' },
 ];
- // ---------- highlighting ----------
+
+// ---------- highlighting ----------
 // Highlights come from the model: in "In your voice" they are phrases that carry the
 // sender's voice; in "Generic" they are phrases that sound like stock AI/template writing.
 function renderHighlighted(text, highlights = [], kind = 'voice') {
@@ -41,7 +46,11 @@ function renderHighlighted(text, highlights = [], kind = 'voice') {
   ranges.forEach(([s, e, k], idx) => {
     if (s < pos) return; // skip overlaps
     if (s > pos) out.push(<span key={`t${idx}`}>{text.slice(pos, s)}</span>);
-    out.push(<mark key={`m${idx}`} className={k}>{text.slice(s, e)}</mark>);
+    out.push(
+      <mark key={`m${idx}`} className={k}>
+        {text.slice(s, e)}
+      </mark>
+    );
     pos = e;
   });
   if (pos < text.length) out.push(<span key="end">{text.slice(pos)}</span>);
@@ -64,9 +73,14 @@ function CopyButton({ text }) {
       }}
     >
       {done ? (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
       ) : (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" />
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </svg>
       )}
     </button>
   );
@@ -76,7 +90,12 @@ function SubjectChips({ data, index, onPick }) {
   return (
     <div className="chips">
       {data.subject_lines.map((s, i) => (
-        <button type="button" key={i} className={'chip' + (i === index ? ' active' : '')} onClick={() => onPick(i)}>
+        <button
+          type="button"
+          key={i}
+          className={'chip' + (i === index ? ' active' : '')}
+          onClick={() => onPick(i)}
+        >
           {s}
         </button>
       ))}
@@ -93,7 +112,9 @@ function Box({ label, kind, body, highlights, mark, subject }) {
   return (
     <div className={'box ' + kind}>
       <span className="box-label">{label}</span>
-      <span className="box-copy"><CopyButton text={`Subject: ${subject}\n\n${body}`} /></span>
+      <span className="box-copy">
+        <CopyButton text={`Subject: ${subject}\n\n${body}`} />
+      </span>
       <p>{renderHighlighted(body, highlights, mark)}</p>
     </div>
   );
@@ -102,7 +123,8 @@ function Box({ label, kind, body, highlights, mark, subject }) {
 function Results({ result }) {
   const { personalized, generic } = result;
   const [ps, setPs] = useState(0);
-  const [gs, setGs] = useState(0); 
+  const [gs, setGs] = useState(0);
+
   return (
     <>
       <p className="legend">
@@ -169,17 +191,18 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState(null);
-  const [caseId, setCaseId] = useState(''); // NEW: selected test case
+  const [caseId, setCaseId] = useState('');
+  const [showTestData, setShowTestData] = useState(false);
 
-  const set = (k) => (e) => setForm({ ...form, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value });
+  const set = (k) => (e) =>
+    setForm({ ...form, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value });
 
-  // CHANGED: the request now lives in run(), so test buttons can call it too
   async function run(data) {
     setLoading(true);
     setError('');
     setResult(null);
     try {
-      const res = await fetch('/api/generate', {
+      const res = await fetch(`${API_BASE}/api/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, length: Number(data.length) }),
@@ -203,7 +226,6 @@ export default function App() {
     run(form);
   }
 
-  // NEW: test data helpers (dev only)
   function loadCase(id, andRun = false) {
     const c = testCases.find((t) => t.id === id);
     if (!c) return;
@@ -231,66 +253,152 @@ export default function App() {
   return (
     <main>
       <h1>ColdOpen</h1>
-      <p className="sub">Cold emails that sound like you wrote them, because the first message is the hardest one to send.</p>
+      <p className="sub">
+        Cold emails that sound like you wrote them, because the first message is the hardest one to send.
+      </p>
 
-      {/* NEW: only visible in `npm run dev`, never on the deployed site */}
+      {/* Dev only: hidden by default; click to open sample cases */}
       {import.meta.env.DEV && (
-        <div className="devbar">
-          <span>Test data</span>
-          <select value={caseId} onChange={(e) => loadCase(e.target.value)}>
-            <option value="">Pick a test case (fills the form)...</option>
-            {testCases.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
-          </select>
-          <button type="button" className="ghost" onClick={randomCase} disabled={loading}>Random &amp; draft</button>
-          <button type="button" className="ghost" onClick={clearForm}>Clear</button>
+        <div className="dev-section">
+          {!showTestData ? (
+            <button
+              type="button"
+              className="ghost dev-toggle"
+              onClick={() => setShowTestData(true)}
+            >
+              Quick check with sample data
+            </button>
+          ) : (
+            <div className="devbar">
+              <span>Test data</span>
+              <select value={caseId} onChange={(e) => loadCase(e.target.value)}>
+                <option value="">Pick a test case (fills the form)...</option>
+                {testCases.map((t) => (
+                  <option key={t.id} value={t.id}>
+                    {t.label}
+                  </option>
+                ))}
+              </select>
+              <button type="button" className="ghost" onClick={randomCase} disabled={loading}>
+                Random &amp; draft
+              </button>
+              <button type="button" className="ghost" onClick={clearForm}>
+                Clear
+              </button>
+              <button
+                type="button"
+                className="ghost"
+                onClick={() => setShowTestData(false)}
+                title="Hide test data"
+              >
+                Hide
+              </button>
+            </div>
+          )}
         </div>
       )}
 
       <form className="card" onSubmit={submit}>
         <label>
           Paste 2-3 messages you have written before (emails, LinkedIn notes, anything natural)
-          <textarea rows={6} value={form.writingSamples} onChange={set('writingSamples')} maxLength={3000} required />
+          <textarea
+            rows={6}
+            value={form.writingSamples}
+            onChange={set('writingSamples')}
+            maxLength={3000}
+            required
+          />
         </label>
         <div className="row">
-          <label>Recipient name<input value={form.recipientName} onChange={set('recipientName')} maxLength={80} required /></label>
-          <label>Their role<input value={form.recipientRole} onChange={set('recipientRole')} maxLength={120} required /></label>
-          <label>Company<input value={form.company} onChange={set('company')} maxLength={120} required /></label>
+          <label>
+            Recipient name
+            <input
+              value={form.recipientName}
+              onChange={set('recipientName')}
+              maxLength={80}
+              required
+            />
+          </label>
+          <label>
+            Their role
+            <input
+              value={form.recipientRole}
+              onChange={set('recipientRole')}
+              maxLength={120}
+              required
+            />
+          </label>
+          <label>
+            Company
+            <input value={form.company} onChange={set('company')} maxLength={120} required />
+          </label>
         </div>
         <div className="row">
           <label>
             Goal
             <select value={form.goal} onChange={set('goal')}>
-              {GOALS.map((g) => <option key={g.value} value={g.value}>{g.label}</option>)}
+              {GOALS.map((g) => (
+                <option key={g.value} value={g.value}>
+                  {g.label}
+                </option>
+              ))}
             </select>
           </label>
           <label>
             Length: ~{form.length} words
-            <input type="range" min="60" max="160" step="20" value={form.length} onChange={set('length')} />
+            <input
+              type="range"
+              min="60"
+              max="160"
+              step="20"
+              value={form.length}
+              onChange={set('length')}
+            />
           </label>
         </div>
         <label>
           About you (optional, true facts only)
-          {/* CHANGED: placeholder fits an experienced engineer */}
-          <input value={form.about} onChange={set('about')} maxLength={400} placeholder="e.g. software engineer, 5+ years, backend work, looking for a senior role" />
+          <input
+            value={form.about}
+            onChange={set('about')}
+            maxLength={400}
+            placeholder="e.g. software engineer, 5+ years, backend work, looking for a senior role"
+          />
         </label>
         <label>
           Your one question (optional)
-          <input value={form.ask} onChange={set('ask')} maxLength={300} placeholder="e.g. how does your team hire for senior backend roles?" />
+          <input
+            value={form.ask}
+            onChange={set('ask')}
+            maxLength={300}
+            placeholder="e.g. how does your team hire for senior backend roles?"
+          />
         </label>
         <label>
           Anything specific to mention? (optional)
-          <input value={form.context} onChange={set('context')} maxLength={500} placeholder="e.g. we worked together at a previous company" />
+          <input
+            value={form.context}
+            onChange={set('context')}
+            maxLength={500}
+            placeholder="e.g. we worked together at a previous company"
+          />
         </label>
         <label className="check">
-          <input type="checkbox" checked={form.compare} onChange={set('compare')} /> Also show a generic version, to see the difference
+          <input type="checkbox" checked={form.compare} onChange={set('compare')} /> Also show a
+          generic version, to see the difference
         </label>
-        <button className="primary" disabled={loading}>{loading ? 'Writing...' : 'Draft my emails'}</button>
+        <button className="primary" disabled={loading}>
+          {loading ? 'Writing...' : 'Draft my emails'}
+        </button>
         {error && <p className="error">{error}</p>}
       </form>
 
       {result && <Results key={result.id} result={result} />}
 
-      <footer>Drafts are written by an open-weight model hosted on Groq. Your samples are sent there to generate drafts and this app does not store them.</footer>
+      <footer>
+        Drafts are written by an open-weight model. Your samples are sent to generate drafts; this
+        app does not store them.
+      </footer>
     </main>
   );
 }
