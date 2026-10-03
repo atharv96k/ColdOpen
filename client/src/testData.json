@@ -1,0 +1,227 @@
+[
+  {
+    "id": "alumni",
+    "label": "Alumni intro: casual voice",
+    "form": {
+      "goal": "alumni",
+      "length": 100,
+      "recipientName": "Priya Sharma",
+      "recipientRole": "Engineering Manager",
+      "company": "Persistent Systems",
+      "about": "Software engineer, 5+ years, backend work, exploring a move into a senior role",
+      "ask": "How did you move from an individual contributor role into engineering management?",
+      "context": "We both studied at the same college",
+      "writingSamples": "Hey Rohan, thanks for the review on the PR, really helpful. I got stuck on the retry logic though, the backoff part confuses me. Can we do a quick call this week? No rush, whenever you are free.\n\nHi team, the deploy went fine, no issues so far. I'll keep an eye on the dashboards tonight. Ping me if anything looks off.\n\nHey! Just checking if you're coming to the team lunch on Friday. I'll save you a seat, it's going to be fun. Let me know :)"
+    }
+  },
+  {
+    "id": "advice",
+    "label": "Career advice: formal voice",
+    "form": {
+      "goal": "advice",
+      "length": 100,
+      "recipientName": "Suresh Patil",
+      "recipientRole": "Director of Engineering",
+      "company": "Infosys",
+      "about": "Software engineer, 5+ years, Java and microservices, wants to grow into a tech lead role",
+      "ask": "Could you spare 15 minutes to advise me on the path from senior engineer to tech lead?",
+      "context": "",
+      "writingSamples": "Dear Sir, I am writing to request your approval for the revised project timeline. The changes are summarised below for your review. I would be grateful for your consideration.\n\nDear Madam, Kindly find attached the updated architecture document for your perusal. I remain available for any clarification at your convenience.\n\nRespected Sir, I would appreciate it if you could share the feedback on the proposal at your earliest convenience. Thank you for your time."
+    }
+  },
+  {
+    "id": "referral",
+    "label": "Referral: short and blunt voice",
+    "form": {
+      "goal": "referral",
+      "length": 60,
+      "recipientName": "Karan Mehta",
+      "recipientRole": "Senior Staff Engineer",
+      "company": "Atlassian",
+      "about": "Software engineer, 5+ years, backend and distributed systems",
+      "ask": "Can you refer me for the senior backend opening on your team?",
+      "context": "",
+      "writingSamples": "Rohan, send the numbers. Need them before standup.\n\nRelease is done. Rollback plan tested. Check the dashboard.\n\nMeeting moved to 3. Be there. Bring the incident notes.\n\nTeam, hotfix is live. Verify and reply."
+    }
+  },
+  {
+    "id": "internship",
+    "label": "Ask about openings: excited emoji voice",
+    "form": {
+      "goal": "internship",
+      "length": 80,
+      "recipientName": "Neha Kulkarni",
+      "recipientRole": "Engineering Manager",
+      "company": "Zensar",
+      "about": "Software engineer, 5+ years, backend work",
+      "ask": "Does your team have any backend openings at the moment?",
+      "context": "We met at a developer meetup",
+      "writingSamples": "heyyy Rohan!! thanks sooo much for the review yesterday 🙌 it literally saved me. quick q tho, can u explain the caching bit again? no stress if ur busy lol\n\nomg did u see the release went out?? zero rollbacks!! still can't believe it 😭 coffee is on me this week\n\nhey, are u coming friday? bringing snacks, it'll be fun :)"
+    }
+  },
+  {
+    "id": "recruiter",
+    "label": "Recruiter intro: professional voice",
+    "form": {
+      "goal": "recruiter",
+      "length": 100,
+      "recipientName": "Anjali Rao",
+      "recipientRole": "Technical Recruiter",
+      "company": "Capgemini",
+      "about": "Software engineer, 5+ years of experience, Java microservices",
+      "ask": "Are there senior backend roles open that match my background?",
+      "context": "",
+      "writingSamples": "Hi Sameer, thanks for the update on the release. I have reviewed the changes and left two comments on the pull request. Let me know once they are addressed and I will approve.\n\nHello team, a quick note on tomorrow's sprint planning. Please add estimates to your tickets beforehand so we can finish within the hour. Thanks.\n\nHi Meera, the deployment went through without issues. I will keep an eye on the logs through the evening and share a summary in the morning."
+    }
+  },
+  {
+    "id": "resume",
+    "label": "Resume feedback: anxious voice",
+    "form": {
+      "goal": "resume",
+      "length": 100,
+      "recipientName": "Vikram Joshi",
+      "recipientRole": "Engineering Director",
+      "company": "Tata Consultancy Services",
+      "about": "Software engineer, 5+ years, backend work, updating my resume for senior roles",
+      "ask": "Could you look at my resume and tell me what to fix for senior roles?",
+      "context": "We worked on the same project a few years ago",
+      "writingSamples": "Hi, sorry to bother you, I know you must be really busy. I just wanted to ask if maybe you could possibly look at my design doc sometime? Totally fine if not, sorry again!\n\nHello, so sorry for the late reply. I hope that's okay. Thank you so much for your patience, I really appreciate it.\n\nHi, sorry, one more small question if you have time. No pressure at all, I can ask someone else too!"
+    }
+  },
+  {
+    "id": "mock",
+    "label": "Mock interview: friendly structured voice",
+    "form": {
+      "goal": "mock",
+      "length": 100,
+      "recipientName": "Meera Deshmukh",
+      "recipientRole": "Principal Engineer",
+      "company": "Cognizant",
+      "about": "Software engineer, 5+ years, preparing for senior-level interviews and system design rounds",
+      "ask": "Would you be open to a 30-minute mock system design interview?",
+      "context": "",
+      "writingSamples": "Hi Ankit, hope the weekend was good! Quick question about the design review: should the doc include the failure modes or only the happy path? Thanks a lot, really appreciate the help.\n\nHi Dr. Rane, I have uploaded the slides to the portal. Please let me know if anything is missing. Thank you!\n\nHi all, reminder that the knowledge-sharing session is at 5 today. Bring your questions. See you there!"
+    }
+  },
+  {
+    "id": "mentor",
+    "label": "Mentoring: warm voice",
+    "form": {
+      "goal": "mentor",
+      "length": 120,
+      "recipientName": "Rahul Kapoor",
+      "recipientRole": "Staff Engineer",
+      "company": "Flipkart",
+      "about": "Software engineer, 5+ years, backend work, wants to grow into a tech lead",
+      "ask": "Would you be open to a monthly 30-minute chat about growing as an engineer?",
+      "context": "We both attended the same developer conference",
+      "writingSamples": "Hey Divya, I really enjoyed our chat today. It helped me see the project differently, and I feel a lot clearer about what to do next. Thank you for taking the time, it meant a lot.\n\nHi Rohit, congratulations on the promotion, so well deserved! You worked so hard for this. Let's celebrate when you are back in town.\n\nHi team, thank you all for the effort this sprint. I know it was a tough one, and I am proud of how everyone pulled together."
+    }
+  },
+  {
+    "id": "team",
+    "label": "Team question: curious technical voice",
+    "form": {
+      "goal": "team",
+      "length": 100,
+      "recipientName": "Divya Nair",
+      "recipientRole": "Engineering Manager",
+      "company": "Razorpay",
+      "about": "Backend engineer, 5+ years of experience",
+      "ask": "How does your team handle on-call and incident reviews?",
+      "context": "",
+      "writingSamples": "Quick question on the retry logic: are we using exponential backoff with jitter, or a fixed delay? Asking because the fixed delay caused a thundering herd last quarter.\n\nI looked into the slow query. The index was there but the planner skipped it because of the type cast. Fixed it in the PR, benchmarks attached.\n\nCurious why we picked Kafka over a plain queue here. Was it ordering guarantees, or throughput? Happy to read the design doc if there is one."
+    }
+  },
+  {
+    "id": "opensource",
+    "label": "Open-source contribution: lowercase dev voice",
+    "form": {
+      "goal": "opensource",
+      "length": 80,
+      "recipientName": "Arjun Rao",
+      "recipientRole": "Core Maintainer",
+      "company": "OpenTrail",
+      "about": "Software engineer, 5+ years, Java and backend work, wants to start contributing to open source",
+      "ask": "Which issues would be a good first contribution?",
+      "context": "I read the CONTRIBUTING guide and set up the project locally",
+      "writingSamples": "hey, saw the issue about the null check, fixed it in my branch. tests pass locally. will open the pr after lunch\n\nthanks for the review! made the changes you asked for, pushed just now. lmk if anything else looks off\n\nquick q, does the linter run on the test folder too? my ci keeps failing on formatting and i can't tell why"
+    }
+  },
+  {
+    "id": "followup",
+    "label": "Follow-up: polite and direct voice",
+    "form": {
+      "goal": "followup",
+      "length": 60,
+      "recipientName": "Sneha Pillai",
+      "recipientRole": "Hiring Manager",
+      "company": "Wipro",
+      "about": "Software engineer, 5+ years, backend work",
+      "ask": "Could you let me know if the senior backend role is still open?",
+      "context": "I emailed on 28 September about backend roles and have not heard back",
+      "writingSamples": "Hi Amit, following up on my earlier note about the invoice. Could you confirm whether it has been processed? Thanks.\n\nHello Priya, just checking in on the status of the access request I raised last week. Let me know if you need anything from my side.\n\nHi team, gentle reminder that feedback on the draft is due Friday. Thanks to those who have already replied."
+    }
+  },
+  {
+    "id": "thanks",
+    "label": "Thank you: warm voice",
+    "form": {
+      "goal": "thanks",
+      "length": 80,
+      "recipientName": "Kiran Shah",
+      "recipientRole": "Senior Engineering Manager",
+      "company": "Zoho",
+      "about": "Software engineer, 5+ years, backend work",
+      "ask": "",
+      "context": "Kiran did a 20-minute call with me on Tuesday and gave me feedback on my system design approach",
+      "writingSamples": "Hi Meera, thank you so much for sending the notes! They made the planning so much easier, and I feel far more ready for the review now. I owe you a coffee!\n\nHey Sanjay, just wanted to say thanks for staying back to help with the demo yesterday. It would not have gone so smoothly without you.\n\nHi Ravi, thank you for the guidance on the migration. Your suggestions really improved the final result."
+    }
+  },
+  {
+    "id": "reconnect",
+    "label": "Reconnect: chatty casual voice",
+    "form": {
+      "goal": "reconnect",
+      "length": 100,
+      "recipientName": "Nikhil Verma",
+      "recipientRole": "Engineering Lead",
+      "company": "Swiggy",
+      "about": "Software engineer, 5+ years, backend work",
+      "ask": "How have you been, and what is your team working on these days?",
+      "context": "We worked on the same team at a previous company until 2021",
+      "writingSamples": "Hey Tanvi! It's been forever, how have you been?? Last I heard you moved cities. We should catch up over a call soon, I have so much to tell you.\n\nHaha that photo is gold, I had totally forgotten about that offsite. Send me the rest of them when you find them!\n\nHey, are you around this weekend? Thinking of getting everyone together for dinner. Let me know, it'll be fun."
+    }
+  },
+  {
+    "id": "reference",
+    "label": "Reference request: formal voice",
+    "form": {
+      "goal": "reference",
+      "length": 100,
+      "recipientName": "Anand Kulkarni",
+      "recipientRole": "Vice President of Engineering",
+      "company": "Mindtree",
+      "about": "Software engineer, 5+ years, backend work, applying for senior roles",
+      "ask": "Would you be willing to act as a reference for my applications?",
+      "context": "He was my skip-level manager for two years",
+      "writingSamples": "Respected Sir, I would like to express my sincere gratitude for your guidance over the past two years. Your feedback helped me improve my work considerably.\n\nDear Madam, I am writing to request a copy of my experience letter. I shall be grateful if it could be issued at your earliest convenience.\n\nRespected Sir, kindly accept my proposal for the architecture review. I remain obliged for your consideration."
+    }
+  },
+  {
+    "id": "switch",
+    "label": "Switch roles: senior engineer voice",
+    "form": {
+      "goal": "switch",
+      "length": 100,
+      "recipientName": "Pooja Menon",
+      "recipientRole": "Engineering Manager",
+      "company": "Northwind Labs",
+      "about": "Software engineer, 5+ years, backend work, looking to move into a senior role",
+      "ask": "How does your team hire for senior backend roles?",
+      "context": "We were in the same college tech club",
+      "writingSamples": "Hi Ravi, I reviewed the design doc. The approach is solid, but I would split the migration into two phases to limit risk. Happy to walk through it on a call.\n\nThanks for the heads up. I will take the on-call this week and hand over the runbook updates on Friday.\n\nHi team, the latency regression is fixed and deployed. Root cause was an unbounded cache. Postmortem is linked in the ticket."
+    }
+  }
+]
