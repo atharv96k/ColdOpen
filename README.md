@@ -14,7 +14,7 @@ Paste a few of your own messages. ColdOpen learns how you write and drafts three
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License" />
 </p>
 
-[**Live demo**](https://your-app.onrender.com) · [**Write-up on DEV**](https://dev.to/your-post) · [**Report an issue**](../../issues)
+[**Live demo**](https://coldopen-fe.onrender.com/) · [**Write-up on DEV**](https://dev.to/your-post) · [**Report an issue**](../../issues)
 
 ![ColdOpen side-by-side comparison](docs/sc.png)
 
