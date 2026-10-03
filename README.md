@@ -1,5 +1,5 @@
 <div align="center">
-<img src="docs/Logo.png" alt="ColdOpen" width="420" />
+<img src="docs/Logo2.png" alt="ColdOpen" width="420" />
 
 ### Cold emails that sound like you wrote them
 
