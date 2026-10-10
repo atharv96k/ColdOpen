@@ -1,8 +1,6 @@
 <div align="center">
 <img src="docs/Logo2.png" alt="ColdOpen" width="420" />
-
-### Cold emails that sound like you wrote them
-
+ 
 Paste a few of your own messages. ColdOpen learns how you write and drafts three cold emails and three subject lines in your voice, then shows you what changed next to a generic AI draft.
 
 <p align="center">
